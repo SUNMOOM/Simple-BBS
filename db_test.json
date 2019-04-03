@@ -1,0 +1,19 @@
+{
+    "user": [{
+        "nickname": "张二",
+        "email": "123456789@qq.com",
+        "password": "123456"
+    }, {
+        "nickname": "张三",
+        "email": "223456789@qq.com",
+        "password": "123456"
+    }, {
+        "nickname": "张四",
+        "email": "323456789@qq.com",
+        "password": "123456"
+    }, {
+        "nickname": "张五",
+        "email": "423456789@qq.com",
+        "password": "123456"
+    }]
+}
