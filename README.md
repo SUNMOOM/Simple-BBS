@@ -2,18 +2,18 @@
 
 ## 1. 项目结构设计
 ```
-./
+../
 |—— app.js			项目启动入口文件
-|—— controllers
-|—— models 			存放mongoose设计的各类模型 Schema 文件，如：users、comments...
-|—— node_models     第三方包
+|—— ./controllers
+|—— ./models 			存放mongoose设计的各类模型 Schema 文件，如：users、comments...
+|—— ./node_models     第三方包
 |—— package.json    包描述文件
 |—— package-lock.json   第三方包锁定文件
-|—— public      公共静态文件
+|—— ./public      公共静态文件
 |—— README.md   项目说明文件
-|—— routers 	路由文件夹，当业务比较多，代码量大的时候，将路由按照业务的分类存储到 routers 目录中
+|—— ./routers 	路由文件夹，当业务比较多，代码量大的时候，将路由按照业务的分类存储到 routers 目录中
 |—— router.js	路由主文件
-|—— views       存储视图目录
+|—— ./views       存储视图目录
 ```
 
 ## 2. 业务设计
@@ -53,18 +53,28 @@
   - 根据业务，操作数据库
   - 根据不同业务返回操作结果，或相应的响应数据
 
+### 4.2 详细业务
+
+#### 后台管理页
+
+
+
 ### 2. 路由设计
 
 session路由设计：
 
-| 请求路径  | 请求方法 | get参数 | post参数 | 是否需要权限 | 备注     |
-| --------- | -------- | ------- | -------- | ------------ | -------- |
-| /         | get      |         |          |              | 渲染首页  |
-| /register | get      |         |          |              | 渲染注册页面 |
-| /register | post |         | nickname、email、password |              | 处理注册请求 |
-| /login | get |  |          |              | 渲染登录页面 |
-| /login | post |         | email、password |              | 处理登录请求 |
-| /logout | get |         |  | | 退出请求 |
+| 请求路径      | 请求方法 | get参数 | post参数                  | 是否需要权限 | 备注         |
+| ------------- | -------- | ------- | ------------------------- | ------------ | ------------ |
+| /             | get      |         |                           |              | 渲染首页     |
+| /register     | get      |         |                           |              | 渲染注册页面 |
+| /register     | post     |         | nickname、email、password |              | 处理注册请求 |
+| /login        | get      |         |                           |              | 渲染登录页面 |
+| /login        | post     |         | email、password           |              | 处理登录请求 |
+| /logout       | get      |         |                           |              | 退出请求     |
+| /admin        | get      |         |                           |              | 渲染后台页面 |
+| /admin/delete | get      | id      |                           | admin        | 注销指定用户 |
+
+
 
 ### 4. 设计业务状态码
 
@@ -127,10 +137,8 @@ d9b1d7db4cd6e70935368a1efb10e377
             // 服务端重定向针对异步请求无效
             window.location.href = '/'
           } else if (err_code === 1) {
-            window.alert('邮箱已存在！')
-          } else if (err_code === 2) {
-            window.alert('昵称已存在！')
-          } else if (err_code === 500) {
+            window.alert('邮箱或昵称已存在！')
+          }else if (err_code === 500) {
             window.alert('服务器忙，请稍后重试！')
           }
         }

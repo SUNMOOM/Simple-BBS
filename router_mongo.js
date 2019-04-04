@@ -61,7 +61,6 @@ router.get('/login',function(req,res){
     res.render('login.html')
 })
 
-
 //处理登录请求
 router.post('/login',function(req,res){
     var body = req.body
@@ -98,6 +97,39 @@ router.get('/logout',function(req,res){
     res.redirect('/')
 })
 
+
+//请求渲染后台管理页
+router.get('/admin',function(req,res){
+    User.find(function(err,data){
+        if (err) {
+            res.status(200).json({
+                err_code: 500,
+                message: '服务器数据库错误'
+            })
+        }
+        res.render('admin.html',{
+            users: data
+        })
+
+    })
+})
+
+//处理注销用户
+// router.get('/admin/delete',function(req,res){
+//     console.log(req.query.id)
+//     User.findOne({
+//         id: req.query.id
+//     },function(err,data){
+//         if (err) {
+//             return res.status(200).json({
+//                 err_code: 500,
+//                 message: '注销失败！'
+//             })
+//         }
+//         // console.log('删除'+data)
+//         res.redirect('/admin')
+//     })
+// })
 
 
 module.exports = router

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理页面</title>
+	<link rel="stylesheet" href="../public/css/style.css">
+</head>
+<body>
+	<div class="search">
+        <div class="s_text vertical"><input name="key" type="text" placeholder="姓名"></div>
+        <a href="#" class="button">查询</a>
+        <a href="/admin/newUser" class="button">新增</a>
+    </div>
+    <div class="hr"></div>
+    <!--查询-->
+    <div class="panel">
+		<form action="" method="post">
+	            <table cellpadding="0" cellspacing="0" class="list_hy">
+	              <tr class="tHead">
+	                <th class="all"><input name="all" type="checkbox" value=""></th>
+	                <th class="num" scope="col"><div>ID</div></th>
+	                <th class="name" scope="col"><div><span>姓名<a href="#" class="up">&nbsp;</a><a href="#" class="down">&nbsp;</a></span></div></th>
+	                <th class="sex" scope="col"><div><span>性别<a href="#" class="up">&nbsp;</a><a href="#" class="down">&nbsp;</a></span></div></th>
+	                <th class="age" scope="col"><div><span>年龄<a href="#" class="up">&nbsp;</a><a href="#" class="down">&nbsp;</a></span></div></th>
+	                <th class="birth" scope="col"><div><span>密码<a href="#" class="up">&nbsp;</a><a href="#" class="down">&nbsp;</a></span></div></th>
+	                <th class="address" scope="col"><div><span>邮箱<a href="#" class="up">&nbsp;</a><a href="#" class="down">&nbsp;</a></span></div></th>
+	                <th class="option" scope="col"><div><span>操作<a href="#" class="up">&nbsp;</a><a href="#" class="down">&nbsp;</a></span></div></th>
+								</tr>
+								{{ each users }}
+	              <tr>
+	                <td class="xz"><input name="" type="checkbox" value=""></td>
+	                <td class="number">{{ $value.id }}</td>
+	                <td >{{ $value.nickname }}</td>
+	                <td >{{ $value.gender }}</td>
+	                <td>{{ $value.age }}</td>
+	                <td>{{ $value.password }} </td>
+	                <td>{{ $value.email }}</td>
+	                <td>
+										<a href="/admin/edit?id={{ $value.id}}" class="edit button">编辑</a>
+										<a href="/admin/delete?id={{ $value.id }}" class="del button">删除</a>
+									</td>
+								</tr>
+								{{ /each }}
+	            </table>
+	            <!--列表-->
+	            <!--右边底部-->
+	    </form>
+	    <div class="foot">
+	        <div class="foot_m">
+	        	<a href="#" class="delete">
+	                批量删除
+	            </a>         
+	                <!--分页-->
+		        <div class="page">
+		        	<a href="#" class="prev"><img src="../public/img/pre.png" alt=""/></a>
+		            <a class="now">1</a>
+		            <a href="#">2</a>
+		            <a href="#">3</a>
+		            <a href="#">4</a>
+		            <a href="#">5</a>
+		            <a href="#">6</a>
+		            <a href="#" class="next"><img src="../public/img/next.png" alt=""/></a>
+		        </div>
+	            <!--分页-->
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>
